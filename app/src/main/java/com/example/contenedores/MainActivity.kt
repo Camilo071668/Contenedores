@@ -38,14 +38,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            ContenedoresTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    PantallaCuadruple()
-                }
-            }
+
+
         }
     }
 }
@@ -56,8 +50,8 @@ fun PantallaCuadruple() {
 
         Row(modifier = Modifier.weight(1f)) {
             Quadrant(
-                title = "Text composable",
-                description = "Displays text and follows the recommended Material Design guidelines.",
+                title = "Text composablfe",
+                description = "Di splays text and follows the recommended Material Design guidelines.",
                 backgroundColor = Color(0xFFEADDFF),
                 modifier = Modifier.weight(1f)
             )
@@ -68,7 +62,6 @@ fun PantallaCuadruple() {
                 modifier = Modifier.weight(1f)
             )
         }
-
 
         Row(modifier = Modifier.weight(1f)) {
             Quadrant(
@@ -88,48 +81,38 @@ fun PantallaCuadruple() {
 }
 
 @Composable
-fun Quadrant(title: String, description: String, backgroundColor: Color, modifier: Modifier) {
-    TODO("Not yet implemented")
+fun Quadrant(
+    title: String,
+    description: String,
+    backgroundColor: Color,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(backgroundColor)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = title,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 16.dp, bottom = 8.dp)
+        )
+
+        Text(
+            text = description,
+            fontSize = 14.sp,
+            textAlign = TextAlign.Justify
+        )
+    }
 }
 
 @Preview(showSystemUi = true)
 @Composable
-fun SuccessScreen() {
-
-    @Composable
-    fun Quadrant(
-        title: String,
-        description: String,
-        backgroundColor: Color,
-        modifier: Modifier = Modifier
-    ) {
-        Column(
-            modifier = modifier
-                .fillMaxSize()
-                .background(backgroundColor)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-
-            Text(
-                text = title,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-
-            Text(
-                text = description,
-                textAlign = TextAlign.Justify
-            )
-        }
-    }
-
-    @Preview(showBackground = true)
-    @Composable
-    fun PreviewQuadrants() {
-        ContenedoresTheme {
-            PantallaCuadruple()
-        }
+fun PreviewQuadrants() {
+    ContenedoresTheme {
+        PantallaCuadruple()
     }
 }
